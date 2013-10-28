@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="tittle">Compras</ui:define>
+		<ui:define name="body">
+			<h:form>
+			  <div class="form-group">
+			    <label for="nome">Lista de compras</label>
+			    <h:inputText class="form-control" id="nome" placeholder="Lista de Compras" valueChangeListener="#{comprarMB.retrieveLista}" >
+			    	<f:ajax event="valueChange" render="table-produtos" />
+			    </h:inputText>
+			  </div>
+			  <h:dataTable styleClass="table" id="table-produtos" var="item" value="#{comprarMB.lista.item}" >
+			  	<h:column>
+    				<f:facet name="header">Comprado</f:facet>
+    				<h:selectBooleanCheckbox value="#{item.comprado}" >
+    					<f:ajax event="valueChange" />
+    				</h:selectBooleanCheckbox>
+    			</h:column>
+			  	<h:column>
+    				<f:facet name="header">Nome</f:facet>
+    				#{item.produto.nome}
+    			</h:column>
+			  </h:dataTable>
+			  <hr/>
+			  <h:commandButton class="btn btn-default" value="Gravar" action="#{comprarMB.save}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

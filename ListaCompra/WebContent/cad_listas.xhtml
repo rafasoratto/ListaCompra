@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="tittle">Cadastro de Lista de Compras</ui:define>
+		<ui:define name="body">
+			<h:form>
+			  <div class="form-group">
+			    <label for="nome">Descrição</label>
+			    <h:inputText class="form-control" id="nome" placeholder="Nome" value="#{listaComprasMB.lista.descricao}" valueChangeListener="#{listaComprasMB.retrieveLista}" >
+			    	<f:ajax event="valueChange" render="table-produtos" />
+			    </h:inputText>
+			  </div>
+			  <div class="form-group">
+			    <label for="produto">Produtos</label>
+			    <h:inputText class="form-control" id="produto" placeholder="Nome do produto" valueChangeListener="#{listaComprasMB.addProduto}" >
+			    	<f:ajax event="valueChange" render="table-produtos" />
+			    </h:inputText>
+			  </div>
+			  <h:dataTable styleClass="table" id="table-produtos" var="item" value="#{listaComprasMB.lista.item}" >
+			  	<h:column>
+    				<f:facet name="header">Nome</f:facet>
+    				#{item.produto.nome}
+    			</h:column>
+			  	<h:column>
+    				<f:facet name="header">Remover</f:facet>
+    				<h:commandLink value="remover" action="#{listaComprasMB.removerProduto(item)}" />
+    			</h:column>
+			  </h:dataTable>
+			  <h:commandButton class="btn btn-default" value="Nova lista" action="#{listaComprasMB.novo}" />
+			  <h:commandButton class="btn btn-default" value="Cadastrar" action="#{listaComprasMB.save}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

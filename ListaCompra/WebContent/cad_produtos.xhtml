@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="tittle">Cadastro de Produtos</ui:define>
+		<ui:define name="body">
+			<h:form id="mainForm">
+				  <div class="form-group">
+				    <label for="nome">Nome</label>
+				    <h:inputText class="form-control" id="nome" placeholder="Nome" value="#{produtosMB.produto.nome}" valueChangeListener="#{produtosMB.retrieveProduto}" >
+				    	<f:ajax event="valueChange" render="mainForm" immediate="true" />
+				    </h:inputText>
+				  </div>
+				  <div class="form-group">
+				    <label for="valor">Valor</label>
+				    <h:inputText class="form-control" id="valor" placeholder="Nome" value="#{produtosMB.produto.valor}" />
+				  </div>
+				  <div style="margin-top: 10px; text-align: center">			  
+				</div>
+				<div class="well">  
+					<input type="text" id="typeahead" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="2" data-source="[Ahmedabad,Akola,Asansol,Aurangabad,Bangaluru,Baroda,Belgaon,Berhumpur,Calicu,Chennai,Chapr,Cherapunji]" />  
+				</div>
+			  	<h:commandButton class="btn btn-default" value="Cadastrar" action="#{produtosMB.save}" />
+			</h:form>
+			<script>
+				$(function(){
+					$('#nome').typeahead({
+						  name: 'accounts',
+						  local: ['aaaaa', 'aaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaa']
+						});
+				});
+			</script>
+		</ui:define>
+	</ui:composition>
+</html>

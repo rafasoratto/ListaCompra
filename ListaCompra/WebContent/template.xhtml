@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lista de Compras</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	</h:head>
+
+	<h:body>
+		<div class="page">
+			<div class="header">
+				<nav class="navbar navbar-default" role="navigation">
+				   <div class="collapse navbar-collapse navbar-ex1-collapse">
+					    <ul class="nav navbar-nav">
+					      <li><a href="./cad_produtos.jsf">Produtos</a></li>
+					      <li><a href="./cad_listas.jsf">Listas</a></li>
+					      <li><a href="./pro_compras.jsf">Compras</a></li>
+					    </ul>
+				   </div>
+				</nav>
+			</div>
+			<div class="content">
+				<div class="panel panel-primary" >
+					<div class="panel-heading"><ui:insert name="tittle"/></div>
+    				<div class="panel-body"><ui:insert name="body"/></div>
+				</div>
+			</div>
+			<div class="footer">
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/typeahead.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</h:body>
+</html>
